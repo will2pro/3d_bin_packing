@@ -147,16 +147,16 @@ def space_collide(item1, item2):
     def dim_collide(item1, item2, axis):
         pj1 = item1.position[axis] + d1[axis]/2   #货品1的axis维度投影，加上该维度长的一半
         pj2 = item2.position[axis] + d2[axis]/2   #货品2的axis维度投影，加上该维度长的一半
-        dis = abs(pj1 - pj2)                       #两者相减，代表对应维度上，两货品中点间的距离
-        return dis < (d1[axis]+d2[axis])/2         #真，说明两货品在该维度的投影有重合。如果在三个维度的投影均有重合，说明空间碰撞。
+        a = round((d1[axis]+d2[axis])/2,3)
+        dis = round(abs(pj1 - pj2),3)             #两者相减，代表对应维度上，两货品中点间的距离。浮点数比较必须注意精度问题
+        return dis < a                  #真，说明两货品在该维度的投影有重合。如果在三个维度的投影均有重合，说明空间碰撞。
 
-    a = dim_collide(item1, item2, Axis.x)
-    b = dim_collide(item1, item2, Axis.y)
-    c = dim_collide(item1, item2, Axis.z)
+    a = dim_collide(item1, item2, Axis.width)
+    b = dim_collide(item1, item2, Axis.height)
+    c = dim_collide(item1, item2, Axis.depth)
     collision =  a and b and c
 
     return collision
-
 
 
 #对堆叠场景的处理，例如面膜等较薄的物品，可以堆叠处理，效率更高
