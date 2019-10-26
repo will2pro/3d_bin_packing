@@ -1,6 +1,7 @@
+# Author: Will <827576169@qq.com>
+# Copyright (c) 2019 Will
 
 import copy
-import numpy as np
 from itertools import permutations
 from collections import Counter
 
