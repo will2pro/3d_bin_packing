@@ -151,9 +151,9 @@ def space_collide(item1, item2):
         dis = round(abs(pj1 - pj2),3)             #两者相减，代表对应维度上，两货品中点间的距离。浮点数比较必须注意精度问题
         return dis < a                  #真，说明两货品在该维度的投影有重合。如果在三个维度的投影均有重合，说明空间碰撞。
 
-    a = dim_collide(item1, item2, Axis.width)
-    b = dim_collide(item1, item2, Axis.height)
-    c = dim_collide(item1, item2, Axis.depth)
+    a = dim_collide(item1, item2, Axis.x)
+    b = dim_collide(item1, item2, Axis.y)
+    c = dim_collide(item1, item2, Axis.z)
     collision =  a and b and c
 
     return collision
